@@ -86,11 +86,13 @@ export function UserHeader({
       <div className="px-6 py-3 flex items-center justify-between">
         {/* Left side - Logo and Title */}
         <div className="flex items-center space-x-4">
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets%2F087df647f1e8465b80d17ed1202a1a86%2Fe158bed7731d41aa84ba65ca872152aa?format=webp&width=800"
-            alt="Yitro"
-            className="h-8 w-auto"
-          />
+          <div className="p-2 bg-white dark:bg-white rounded-md">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2F087df647f1e8465b80d17ed1202a1a86%2Fe158bed7731d41aa84ba65ca872152aa?format=webp&width=800"
+              alt="Yitro"
+              className="h-8 w-auto"
+            />
+          </div>
           <div className="flex items-center space-x-2">
             <User className="h-5 w-5 text-blue-600" />
             <span className="text-lg font-semibold text-gray-900 dark:text-gray-100">

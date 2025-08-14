@@ -52,11 +52,13 @@ export default function VerifyEmail() {
       <div className="w-full max-w-md space-y-8">
         {/* Logo */}
         <div className="text-center">
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets%2F087df647f1e8465b80d17ed1202a1a86%2F874635e44e4546cc93b707faf6deafea?format=webp&width=800"
-            alt="Yitro Logo"
-            className="mx-auto h-16 w-auto mb-8"
-          />
+          <div className="inline-block p-4 bg-white dark:bg-white rounded-lg mb-8">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2F087df647f1e8465b80d17ed1202a1a86%2F874635e44e4546cc93b707faf6deafea?format=webp&width=800"
+              alt="Yitro Logo"
+              className="h-16 w-auto"
+            />
+          </div>
         </div>
 
         {/* Verification Status */}

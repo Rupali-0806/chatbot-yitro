@@ -97,11 +97,13 @@ export default function ResetPassword() {
       <div className="min-h-screen bg-login-gradient flex items-center justify-center p-4">
         <div className="w-full max-w-md space-y-8">
           <div className="text-center">
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets%2F087df647f1e8465b80d17ed1202a1a86%2F874635e44e4546cc93b707faf6deafea?format=webp&width=800"
-              alt="Yitro Logo"
-              className="mx-auto h-16 w-auto mb-8"
-            />
+            <div className="inline-block p-4 bg-white dark:bg-white rounded-lg mb-8">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets%2F087df647f1e8465b80d17ed1202a1a86%2F874635e44e4546cc93b707faf6deafea?format=webp&width=800"
+                alt="Yitro Logo"
+                className="h-16 w-auto"
+              />
+            </div>
           </div>
 
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 text-center">
@@ -130,11 +132,13 @@ export default function ResetPassword() {
       <div className="min-h-screen bg-login-gradient flex items-center justify-center p-4">
         <div className="w-full max-w-md space-y-8">
           <div className="text-center">
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets%2F087df647f1e8465b80d17ed1202a1a86%2F874635e44e4546cc93b707faf6deafea?format=webp&width=800"
-              alt="Yitro Logo"
-              className="mx-auto h-16 w-auto mb-8"
-            />
+            <div className="inline-block p-4 bg-white dark:bg-white rounded-lg mb-8">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets%2F087df647f1e8465b80d17ed1202a1a86%2F874635e44e4546cc93b707faf6deafea?format=webp&width=800"
+                alt="Yitro Logo"
+                className="h-16 w-auto"
+              />
+            </div>
           </div>
 
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 text-center">
@@ -160,11 +164,13 @@ export default function ResetPassword() {
       <div className="w-full max-w-md space-y-8">
         {/* Logo */}
         <div className="text-center">
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets%2F087df647f1e8465b80d17ed1202a1a86%2F874635e44e4546cc93b707faf6deafea?format=webp&width=800"
-            alt="Yitro Logo"
-            className="mx-auto h-16 w-auto mb-8"
-          />
+          <div className="inline-block p-4 bg-white dark:bg-white rounded-lg mb-8">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2F087df647f1e8465b80d17ed1202a1a86%2F874635e44e4546cc93b707faf6deafea?format=webp&width=800"
+              alt="Yitro Logo"
+              className="h-16 w-auto"
+            />
+          </div>
           <div className="inline-flex items-center justify-center w-24 h-24 border-2 border-white/30 rounded-full bg-white/10 backdrop-blur-sm">
             <Lock className="w-12 h-12 text-white" strokeWidth={1.5} />
           </div>

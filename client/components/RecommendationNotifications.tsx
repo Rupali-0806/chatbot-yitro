@@ -87,7 +87,7 @@ export function RecommendationNotifications() {
           id: aiRec.id,
           type: "ai-recommendation",
           title: `AI: ${aiRec.action}`,
-          description: `${aiRec.reason} (Confidence: ${Math.round(aiRec.confidence * 100)}%)`,
+          description: aiRec.reason,
           priority: aiRec.priority,
           dueDate: now,
           relatedEntity: {

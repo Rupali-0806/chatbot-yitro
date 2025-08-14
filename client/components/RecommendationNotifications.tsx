@@ -304,17 +304,35 @@ export function RecommendationNotifications() {
         });
       });
 
-    // Sort by priority and due date
+    // Sort by priority: Red (high) -> Blue (medium) -> Purple (low)
     newRecommendations.sort((a, b) => {
-      const priorityOrder = { high: 3, medium: 2, low: 1 };
+      // Priority order: red=high=1st, blue=medium=2nd, purple=low=3rd
+      const getPriorityOrder = (priority: string) => {
+        switch (priority) {
+          case "high":
+            return 1; // Red tasks first
+          case "medium":
+            return 2; // Blue tasks second
+          case "low":
+            return 3; // Purple tasks last
+          default:
+            return 4;
+        }
+      };
+
       const priorityDiff =
-        priorityOrder[b.priority] - priorityOrder[a.priority];
+        getPriorityOrder(a.priority) - getPriorityOrder(b.priority);
 
       if (priorityDiff !== 0) return priorityDiff;
 
+      // If same priority, sort by due date (earliest first)
       if (a.dueDate && b.dueDate) {
         return a.dueDate.getTime() - b.dueDate.getTime();
       }
+
+      // If one has due date and other doesn't, prioritize the one with due date
+      if (a.dueDate && !b.dueDate) return -1;
+      if (!a.dueDate && b.dueDate) return 1;
 
       return 0;
     });
@@ -390,9 +408,9 @@ export function RecommendationNotifications() {
       case "high":
         return "text-red-600 bg-red-50 border-red-200 dark:text-red-400 dark:bg-red-900/20 dark:border-red-800";
       case "medium":
-        return "text-yellow-600 bg-yellow-50 border-yellow-200 dark:text-yellow-400 dark:bg-yellow-900/20 dark:border-yellow-800";
-      case "low":
         return "text-blue-600 bg-blue-50 border-blue-200 dark:text-blue-400 dark:bg-blue-900/20 dark:border-blue-800";
+      case "low":
+        return "text-purple-600 bg-purple-50 border-purple-200 dark:text-purple-400 dark:bg-purple-900/20 dark:border-purple-800";
       default:
         return "text-gray-600 bg-gray-50 border-gray-200 dark:text-gray-400 dark:bg-gray-900/20 dark:border-gray-800";
     }
@@ -508,16 +526,17 @@ export function RecommendationNotifications() {
     <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
       <DropdownMenuTrigger asChild>
         <Button
-          variant="ghost"
+          variant="outline"
           size="sm"
-          className="relative hover:bg-gray-100 dark:hover:bg-gray-800"
+          className="relative hover:bg-gray-100 dark:hover:bg-gray-800 flex items-center gap-2"
           onClick={handleNotificationClick}
         >
-          <Bell className="h-5 w-5" />
+          <Target className="h-4 w-4" />
+          <span className="text-sm font-medium">Task Recommendation</span>
           {unreadCount > 0 && (
             <Badge
               variant="destructive"
-              className="absolute -top-1 -right-1 h-5 w-5 rounded-full p-0 flex items-center justify-center text-xs font-bold"
+              className="ml-1 h-5 w-5 rounded-full p-0 flex items-center justify-center text-xs font-bold"
             >
               {unreadCount > 9 ? "9+" : unreadCount}
             </Badge>
@@ -534,7 +553,7 @@ export function RecommendationNotifications() {
             <CardTitle className="text-base flex items-center justify-between">
               <span className="flex items-center">
                 <Target className="h-4 w-4 mr-2" />
-                AI Recommendations
+                Recommendations
               </span>
               {recommendations.length > 0 && (
                 <Badge variant="secondary" className="text-xs">

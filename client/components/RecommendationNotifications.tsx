@@ -508,16 +508,17 @@ export function RecommendationNotifications() {
     <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
       <DropdownMenuTrigger asChild>
         <Button
-          variant="ghost"
+          variant="outline"
           size="sm"
-          className="relative hover:bg-gray-100 dark:hover:bg-gray-800"
+          className="relative hover:bg-gray-100 dark:hover:bg-gray-800 flex items-center gap-2"
           onClick={handleNotificationClick}
         >
-          <Bell className="h-5 w-5" />
+          <Target className="h-4 w-4" />
+          <span className="text-sm font-medium">Task Recommendation</span>
           {unreadCount > 0 && (
             <Badge
               variant="destructive"
-              className="absolute -top-1 -right-1 h-5 w-5 rounded-full p-0 flex items-center justify-center text-xs font-bold"
+              className="ml-1 h-5 w-5 rounded-full p-0 flex items-center justify-center text-xs font-bold"
             >
               {unreadCount > 9 ? "9+" : unreadCount}
             </Badge>

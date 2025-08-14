@@ -304,17 +304,21 @@ export function RecommendationNotifications() {
         });
       });
 
-    // Sort by priority and due date
+    // Sort by priority first (high -> medium -> low), then by due date
     newRecommendations.sort((a, b) => {
       const priorityOrder = { high: 3, medium: 2, low: 1 };
-      const priorityDiff =
-        priorityOrder[b.priority] - priorityOrder[a.priority];
+      const priorityDiff = priorityOrder[b.priority] - priorityOrder[a.priority];
 
       if (priorityDiff !== 0) return priorityDiff;
 
+      // If same priority, sort by due date (earliest first)
       if (a.dueDate && b.dueDate) {
         return a.dueDate.getTime() - b.dueDate.getTime();
       }
+
+      // If one has due date and other doesn't, prioritize the one with due date
+      if (a.dueDate && !b.dueDate) return -1;
+      if (!a.dueDate && b.dueDate) return 1;
 
       return 0;
     });
@@ -535,7 +539,7 @@ export function RecommendationNotifications() {
             <CardTitle className="text-base flex items-center justify-between">
               <span className="flex items-center">
                 <Target className="h-4 w-4 mr-2" />
-                AI Recommendations
+                Recommendations
               </span>
               {recommendations.length > 0 && (
                 <Badge variant="secondary" className="text-xs">

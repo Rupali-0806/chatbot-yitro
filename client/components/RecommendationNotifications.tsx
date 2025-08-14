@@ -309,14 +309,19 @@ export function RecommendationNotifications() {
       // Priority order: red=high=1st, blue=medium=2nd, purple=low=3rd
       const getPriorityOrder = (priority: string) => {
         switch (priority) {
-          case 'high': return 1; // Red tasks first
-          case 'medium': return 2; // Blue tasks second
-          case 'low': return 3; // Purple tasks last
-          default: return 4;
+          case "high":
+            return 1; // Red tasks first
+          case "medium":
+            return 2; // Blue tasks second
+          case "low":
+            return 3; // Purple tasks last
+          default:
+            return 4;
         }
       };
 
-      const priorityDiff = getPriorityOrder(a.priority) - getPriorityOrder(b.priority);
+      const priorityDiff =
+        getPriorityOrder(a.priority) - getPriorityOrder(b.priority);
 
       if (priorityDiff !== 0) return priorityDiff;
 

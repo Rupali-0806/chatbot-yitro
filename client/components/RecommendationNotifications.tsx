@@ -304,9 +304,9 @@ export function RecommendationNotifications() {
         });
       });
 
-    // Sort by priority first (high -> medium -> low), then by due date
+    // Sort by priority first (red/high -> blue/medium -> purple/low), then by due date
     newRecommendations.sort((a, b) => {
-      const priorityOrder = { high: 3, medium: 2, low: 1 };
+      const priorityOrder = { high: 3, medium: 2, low: 1 }; // high=red, medium=blue, low=purple
       const priorityDiff = priorityOrder[b.priority] - priorityOrder[a.priority];
 
       if (priorityDiff !== 0) return priorityDiff;

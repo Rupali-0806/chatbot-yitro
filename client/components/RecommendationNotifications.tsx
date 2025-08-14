@@ -304,10 +304,19 @@ export function RecommendationNotifications() {
         });
       });
 
-    // Sort by priority first (red/high -> blue/medium -> purple/low), then by due date
+    // Sort by priority: Red (high) -> Blue (medium) -> Purple (low)
     newRecommendations.sort((a, b) => {
-      const priorityOrder = { high: 3, medium: 2, low: 1 }; // high=red, medium=blue, low=purple
-      const priorityDiff = priorityOrder[b.priority] - priorityOrder[a.priority];
+      // Priority order: red=high=1st, blue=medium=2nd, purple=low=3rd
+      const getPriorityOrder = (priority: string) => {
+        switch (priority) {
+          case 'high': return 1; // Red tasks first
+          case 'medium': return 2; // Blue tasks second
+          case 'low': return 3; // Purple tasks last
+          default: return 4;
+        }
+      };
+
+      const priorityDiff = getPriorityOrder(a.priority) - getPriorityOrder(b.priority);
 
       if (priorityDiff !== 0) return priorityDiff;
 
